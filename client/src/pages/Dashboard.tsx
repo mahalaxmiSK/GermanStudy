@@ -6,6 +6,7 @@ import { writingPrompts } from '../data/writing';
 import { speakingPrompts } from '../data/speaking';
 import { readingTexts } from '../data/reading';
 import { listeningExercises } from '../data/listening';
+import { getTotalPhraseCount } from '../data/templates';
 import type { ModuleInfo } from '../types';
 import ProgressBar from '../components/ProgressBar';
 import ThemeFilter from '../components/ThemeFilter';
@@ -65,6 +66,15 @@ const modules: ModuleInfo[] = [
     description: 'Audio exercises',
     totalItems: listeningExercises.length,
   },
+  {
+    id: 'phrases',
+    name: 'Phrase Book',
+    icon: '📝',
+    color: '#ab47bc',
+    path: '/phrases',
+    description: 'Reusable templates & phrases',
+    totalItems: getTotalPhraseCount(),
+  },
 ];
 
 const totalItems = modules.reduce((sum, m) => sum + m.totalItems, 0);
@@ -78,6 +88,7 @@ const itemLabel = (count: number, id: string): string => {
     grammar: 'exercises',
     reading: 'texts',
     listening: 'exercises',
+    phrases: 'phrases',
   };
   return `${count} ${labels[id] ?? 'items'}`;
 };

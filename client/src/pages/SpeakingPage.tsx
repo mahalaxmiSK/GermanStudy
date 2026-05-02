@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback, useRef, type CSSProperties } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { speakingPrompts } from '../data/speaking';
 import type { SpeakingPrompt } from '../data/speaking';
 import BackButton from '../components/BackButton';
@@ -318,6 +319,7 @@ function btn(bg: string, fg = '#fff'): CSSProperties {
 }
 
 export default function SpeakingPage() {
+  const navigate = useNavigate();
   const [selectedTheme, setSelectedTheme] = useState<string | null>(null);
   const [selectedTeil, setSelectedTeil] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -742,6 +744,15 @@ export default function SpeakingPage() {
                     </li>
                   ))}
                 </ul>
+                <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+                  <button
+                    className="btn"
+                    style={{ fontSize: '0.85rem', background: '#ab47bc22', color: '#ab47bc', border: '1px solid #ab47bc44' }}
+                    onClick={() => navigate('/phrases')}
+                  >
+                    📝 Open Phrase Book
+                  </button>
+                </div>
               </div>
             )}
           </div>

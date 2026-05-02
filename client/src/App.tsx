@@ -6,6 +6,7 @@ import SpeakingPage from './pages/SpeakingPage';
 import GrammarPage from './pages/GrammarPage';
 import ReadingPage from './pages/ReadingPage';
 import ListeningPage from './pages/ListeningPage';
+import PhrasesPage from './pages/PhrasesPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/grammar" element={<GrammarPage />} />
           <Route path="/reading" element={<ReadingPage />} />
           <Route path="/listening" element={<ListeningPage />} />
+          <Route path="/phrases" element={<PhrasesPage />} />
         </Routes>
       </div>
     </BrowserRouter>

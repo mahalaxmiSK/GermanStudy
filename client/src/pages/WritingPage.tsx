@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback, type CSSProperties } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { writingPrompts, type WritingPrompt } from '../data/writing';
 import BackButton from '../components/BackButton';
 import ThemeFilter from '../components/ThemeFilter';
@@ -264,6 +265,7 @@ const s = {
 /* ── Component ── */
 
 const WritingPage: React.FC = () => {
+  const navigate = useNavigate();
   const [selectedTheme, setSelectedTheme] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [drafts, setDrafts] = useState<Record<string, string>>(loadDrafts);
@@ -433,6 +435,15 @@ const WritingPage: React.FC = () => {
                   <li key={starter} style={s.phraseItem}>{starter}</li>
                 ))}
               </ul>
+              <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+                <button
+                  className="btn"
+                  style={{ fontSize: '0.85rem', background: '#ab47bc22', color: '#ab47bc', border: '1px solid #ab47bc44' }}
+                  onClick={() => navigate('/phrases')}
+                >
+                  📝 Open Phrase Book
+                </button>
+              </div>
             </div>
           )}
 
